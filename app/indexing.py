@@ -27,8 +27,8 @@ def _tokenize(text: str) -> list[str]:
     return re.findall(r"\w+", text.lower())
 
 def build_retriever(chunks: list[Document]) -> EnsembleRetriever:
-    bm25 = BM25Retriever.from_documents(chunks, k = 5, preprocess_func=_tokenize)
-    dense = InMemoryVectorStore.from_documents(chunks, embeddings).as_retriever(search_kwargs = {"k": 5})
+    bm25 = BM25Retriever.from_documents(chunks, k = 20, preprocess_func=_tokenize)
+    dense = InMemoryVectorStore.from_documents(chunks, embeddings).as_retriever(search_kwargs = {"k": 20})
     return EnsembleRetriever(retrievers=[bm25, dense], weights = [.5, .5])
 
 _chunks: list[Document] = []
@@ -50,4 +50,3 @@ def search(query: str, k: int = 5) -> list[Document]:
 
 def stats() -> dict:
     return {"documents": len({c.metadata["source"] for c in _chunks}), "chunks": len(_chunks)}
-
