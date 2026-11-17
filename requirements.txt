@@ -6,10 +6,14 @@ annotated-doc==0.0.5
 annotated-types==0.8.0
 anyio==4.16.0
 attrs==26.1.0
+azure-core==1.41.0
+azure-storage-blob==12.31.1
 certifi==2026.10.23
+cffi==2.1.1
 charset-normalizer==3.5.2
 click==8.5.0
 cloudpickle==3.1.2
+cryptography==50.0.2
 detect-installer==0.2.1
 distro==1.9.0
 dnspython==2.9.1
@@ -32,6 +36,7 @@ httpx-sse==0.4.3
 httpx2==2.16.0
 huggingface_hub==1.33.0
 idna==3.20
+isodate==0.7.2
 Jinja2==3.1.6
 joblib==1.6.0
 jsonpatch==1.47
@@ -63,6 +68,7 @@ orjson==3.13.0
 packaging==26.3
 propcache==0.5.4
 protobuf==7.36.2
+pycparser==3.12
 pydantic==2.14.2
 pydantic-extra-types==2.11.1
 pydantic-settings==2.16.2
