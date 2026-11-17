@@ -1,6 +1,7 @@
 from azure.storage.blob import BlobServiceClient
 from app.config import get_settings
 
+
 def _container():
     settings = get_settings()
     service = BlobServiceClient.from_connection_string(settings.azure_storage_connection_string)

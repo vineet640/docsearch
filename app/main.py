@@ -1,8 +1,15 @@
 from typing import Annotated
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Query, UploadFile
 from app import indexing, storage
+from contextlib import asynccontextmanager
 
-app = FastAPI(title = "DocSearch")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    files = [(p["name"], storage.read_pdf(p["name"])) for p in storage.list_pdfs()]
+    indexing.add_documents(files)
+    yield
+
+app = FastAPI(title = "DocSearch", lifespan = lifespan)
 
 @app.get("/health")
 def health():
@@ -33,3 +40,4 @@ def search(
 @app.get("/documents")
 def documents():
     return list(storage.list_pdfs())
+
