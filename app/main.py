@@ -39,5 +39,6 @@ def search(
 
 @app.get("/documents")
 def documents():
-    return list(storage.list_pdfs())
+    return list(storage.list_pdfs()) 
 
+                                                                                                  
